@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprintsapi\BlueprintsAPIApplication.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintsPersistence.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\persistence\impl\Tuple.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\controllers\BlueprintAPIController.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\filter\impl\SubsampledBlueprintFilter.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\filter\BlueprintFilter.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintPersistenceException.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\services\BlueprintsServices.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintNotFoundException.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\filter\impl\RedundantBlueprintFilter.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\model\Blueprint.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\persistence\impl\InMemoryBlueprintPersistence.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\controllers\ResourceNotFoundException.java
+C:\Users\User\Desktop\8\ARSW\5\ARSW-Lab05\src\main\java\edu\eci\arsw\blueprints\model\Point.java
