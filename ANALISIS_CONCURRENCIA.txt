@@ -1,0 +1,18 @@
+Condición de carrera: Sucede cuando dos hilos o más acceden al mismo recurso al mismo tiempo
+Región crítica: Es aquella sección dentro del código en donde dos o más hilos acceden a un recurso,
+    situación que podría generar una condición de carrera.
+
+Teniendo en cuenta las definiciones anteriores, las condiciones de carrera encontradas y regiones
+    criticas en el código trabajado son:
+
+    La clase de persistencia, es una gran región crítica, ya que esta clase es la que maneja la lista
+    en donde los planos son almacenados, por lo que esta lista es la que será modificada constantemente pues los diferentes hilos,
+    entonces, tratarán de acceder a este recurso, y se puede generar una condición de carrera.
+
+    Los métodos de la clase de control, también son regiones críticas, pues son los que generan el acceso a los recursos
+    del programa. Por lo que si dos o más hilos tratan de añadir, actualizar o consultar, uno o varios planos,
+    pues entrarán en conflicto por realizar estas operaciones al mismo tiempo.
+
+El cambio que se puede realizar para corregir la condición de carrera, es convertir la lista de elementos que nos dan,
+en una lista sincronizada, de esta forma, aprovechamos la implementación de las clases sincronizadas de java para que,
+cada que un hilo interactúe con esta lista, bloquea a los demás hilos hasta que esté desocupe el recurso.
