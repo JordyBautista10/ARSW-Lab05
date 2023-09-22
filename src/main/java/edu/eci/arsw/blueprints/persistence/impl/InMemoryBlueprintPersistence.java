@@ -27,26 +27,28 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
     public InMemoryBlueprintPersistence() {
         //load stub data
-        Point[] pts=new Point[]{new Point(140, 140),new Point(140, 140)};
+        Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115)};
         Blueprint bp=new Blueprint("_authorname_", "_bpname_ ",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
-        //Inicializar con tres planes adicionales
-        pts=new Point[]{new Point(28, 02),new Point(02, 115)};
+
+        // Tres puntos adicionales
+        pts=new Point[]{new Point(432, 157),new Point(492, 647)};
         bp=new Blueprint("Juliana", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
-        pts=new Point[]{new Point(21, 02),new Point(12, 115)};
+        pts=new Point[]{new Point(21, 12),new Point(164, 847)};
         bp=new Blueprint("Mariana", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
-        pts=new Point[]{new Point(20, 02),new Point(9, 115)};
+        pts=new Point[]{new Point(20, 9),new Point(2002, 147)};
         bp=new Blueprint("Ximena", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
-        //Puntos del mismo autor
-        pts=new Point[]{new Point(01, 03),new Point(04, 115)};
+        // Dos planos del mismo autor
+        pts=new Point[]{new Point(10, 12),new Point(02, 259)};
         bp=new Blueprint("Santiago", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
-        pts=new Point[]{new Point(10, 02),new Point(12, 115)};
+        pts=new Point[]{new Point(140, 140),new Point(140, 140)};
         bp=new Blueprint("Santiago", "Blueprint2",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
+
     }    
     
     @Override
