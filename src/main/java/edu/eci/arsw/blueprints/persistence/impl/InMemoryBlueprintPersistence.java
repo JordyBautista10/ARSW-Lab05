@@ -7,7 +7,6 @@ package edu.eci.arsw.blueprints.persistence.impl;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,7 +41,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         bp=new Blueprint("Ximena", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         // Dos planos del mismo autor
-        pts=new Point[]{new Point(10, 12),new Point(02, 259)};
+        pts=new Point[]{new Point(10, 12),new Point(2, 259)};
         bp=new Blueprint("Santiago", "Blueprint1",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         pts=new Point[]{new Point(140, 140),new Point(140, 140)};
@@ -62,12 +61,12 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     }
 
     @Override
-    public Blueprint getBlueprint(String author, String bprintname) throws BlueprintNotFoundException {
+    public Blueprint getBlueprint(String author, String bprintname) {
         return blueprints.get(new Tuple<>(author, bprintname));
     }
 
     @Override
-    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
+    public Set<Blueprint> getBlueprintsByAuthor(String author) {
         Set<Tuple<String, String>> autorName = blueprints.keySet();
         Set<Blueprint> responses = new HashSet<>();
         for (Tuple<String, String> autNa : autorName){
@@ -79,10 +78,15 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     }
 
     @Override
-    public Set<Blueprint> getAllBlueprints() throws BlueprintPersistenceException {
-        Set<Blueprint> responses = new HashSet();
+    public Set<Blueprint> getAllBlueprints() {
+        Set<Blueprint> responses = new HashSet<>();
         responses.addAll(blueprints.values());
         return responses;
+    }
+
+    public void updateBlueprint(Point[] points, String author, String name) {
+        Blueprint blueprint = getBlueprint(author, name);
+        blueprint.setPoints(Arrays.asList(points));
     }
 
 }

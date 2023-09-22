@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
+import edu.eci.arsw.blueprints.model.Blueprint;
+import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,11 +34,11 @@ public class BlueprintAPIController {
         try {
             //obtener datos que se enviarán a través del API en formato Json
             Gson gson = new Gson();
-            String json = gson.toJson(blueprintServices.getAllBlueprints());
+            String json = gson.toJson(blueprintServices.getFilteredAllBlueprints());
             return new ResponseEntity<>(json, HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Algo salio mal ;-;", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -72,5 +74,30 @@ public class BlueprintAPIController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> addNewBlueprint(@RequestBody Blueprint blueprint){
+        try {
+            //registrar dato
+            blueprintServices.addNewBlueprint(blueprint);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Algo salio mal ;-;",HttpStatus.FORBIDDEN);
+        }
+
+    }
+
+    @PutMapping("/{author}/{bpname}")
+    public ResponseEntity<?> updateBlueprintAuthorName(@RequestBody Point[] points, @PathVariable("author") String author, @PathVariable("bpname") String name){
+        try {
+            //registrar dato
+            blueprintServices.updateBlueprintAuthorName(points, author, name);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Algo salio mal ;-;",HttpStatus.FORBIDDEN);
+        }
+
+    }
 }
 
