@@ -30,7 +30,6 @@ public class BlueprintAPIController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getBlueprint() {
         try {
-            System.out.println("metodo 1");
             //obtener datos que se enviarán a través del API en formato Json
             Gson gson = new Gson();
             String json = gson.toJson(blueprintServices.getAllBlueprints());
@@ -44,10 +43,25 @@ public class BlueprintAPIController {
     @RequestMapping("/{author}")
     public ResponseEntity<?> getBlueprintByAuthor(@PathVariable String author) {
         try {
-            System.out.println("metodo 2");
             //obtener datos que se enviarán a través del API en formato Json
             Gson gson = new Gson();
             String json = gson.toJson(blueprintServices.getFilteredBlueprintsByAuthor(author));
+            if (json.equals("[]")) {
+                throw new ResourceNotFoundException();
+            }
+            return new ResponseEntity<>(json, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping("/{author}/{bpname}")
+    public ResponseEntity<?> getBlueprintByAuthor(@PathVariable String author, @PathVariable String bpname) {
+        try {
+            //obtener datos que se enviarán a través del API en formato Json
+            Gson gson = new Gson();
+            String json = gson.toJson(blueprintServices.getFilteredBlueprint(author, bpname));
             if (json.equals("[]")) {
                 throw new ResourceNotFoundException();
             }

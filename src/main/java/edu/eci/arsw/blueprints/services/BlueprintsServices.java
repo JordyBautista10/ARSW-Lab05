@@ -29,7 +29,7 @@ public class BlueprintsServices {
     @Qualifier("InMemory")
     BlueprintsPersistence bpp;
     @Autowired
-    @Qualifier("Subsampling")
+    @Qualifier("redundant")
     BlueprintFilter filter;
     
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException {
